@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 19, 2020 9:51:46 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="bd.Etudiant" table="ETUDIANT" catalog="db_21701558" optimistic-lock="version">
+        <id name="numetudiant" type="java.lang.Integer">
+            <column name="NUMETUDIANT" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="formation" class="bd.Formation" fetch="select">
+            <column name="CODEF" not-null="true" />
+        </many-to-one>
+        <property name="mailetu" type="string">
+            <column name="MAILETU" length="128" />
+        </property>
+        <property name="mdpetu" type="string">
+            <column name="MDPETU" length="128" />
+        </property>
+        <property name="nometu" type="string">
+            <column name="NOMETU" length="128" />
+        </property>
+        <property name="prenometu" type="string">
+            <column name="PRENOMETU" length="128" />
+        </property>
+        <property name="photoetu" type="string">
+            <column name="PHOTOETU" length="128" />
+        </property>
+        <property name="adressesoc" type="string">
+            <column name="ADRESSESOC" length="128" />
+        </property>
+        <property name="mailsoc" type="string">
+            <column name="MAILSOC" length="128" />
+        </property>
+        <property name="raisonsoc" type="string">
+            <column name="RAISONSOC" length="128" />
+        </property>
+        <property name="typeetu" type="string">
+            <column name="TYPEETU" length="128" />
+        </property>
+        <set name="appartenirgroupes" table="APPARTENIRGROUPE" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="NUMETUDIANT" not-null="true" />
+            </key>
+            <one-to-many class="bd.Appartenirgroupe" />
+        </set>
+        <set name="etreprersenters" table="ETREPRERSENTER" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="NUMETUDIANT" not-null="true" />
+            </key>
+            <one-to-many class="bd.Etreprersenter" />
+        </set>
+        <set name="ficheindividuelles" table="FICHEINDIVIDUELLE" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="NUMETUDIANT" not-null="true" />
+            </key>
+            <one-to-many class="bd.Ficheindividuelle" />
+        </set>
+    </class>
+</hibernate-mapping>

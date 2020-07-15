@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 19, 2020 9:51:46 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="bd.Cours" table="COURS" catalog="db_21701558" optimistic-lock="version">
+        <id name="codec" type="java.lang.Integer">
+            <column name="CODEC" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="formation" class="bd.Formation" fetch="select">
+            <column name="CODEF" not-null="true" />
+        </many-to-one>
+           <property name="nomc" type="string">
+            <column name="NOMC" length="128" />
+        </property>
+        <property name="typec" type="string">
+            <column name="TYPEC" length="128" />
+        </property>
+        <property name="uec" type="string">
+            <column name="UEC" length="128" />
+        </property>
+        <set name="enseignants" table="DISPENSER" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="CODEC" not-null="true" />
+            </key>
+            <many-to-many entity-name="bd.Enseignant">
+                <column name="CODEE" not-null="true" />
+            </many-to-many>
+        </set>
+        <set name="creneaus" table="CRENEAU" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="CODEC" />
+            </key>
+            <one-to-many class="bd.Creneau" />
+        </set>
+        <set name="groupes" table="CORESSPONDRE" inverse="false" lazy="true" fetch="select">
+            <key>
+                <column name="CODEC" not-null="true" />
+            </key>
+            <many-to-many entity-name="bd.Groupe">
+                <column name="CODEG" not-null="true" />
+            </many-to-many>
+        </set>
+    </class>
+</hibernate-mapping>

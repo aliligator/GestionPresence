@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 19, 2020 9:51:46 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="bd.Appartenirgroupe" table="APPARTENIRGROUPE" catalog="db_21701558" optimistic-lock="version">
+        <composite-id name="id" class="bd.AppartenirgroupeId">
+            <key-property name="numetudiant" type="int">
+                <column name="NUMETUDIANT" />
+            </key-property>
+            <key-property name="codeg" type="int">
+                <column name="CODEG" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="etudiant" class="bd.Etudiant" update="false" insert="false" fetch="select">
+            <column name="NUMETUDIANT" not-null="true" />
+        </many-to-one>
+        <many-to-one name="groupe" class="bd.Groupe" update="false" insert="false" fetch="select">
+            <column name="CODEG" not-null="true" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

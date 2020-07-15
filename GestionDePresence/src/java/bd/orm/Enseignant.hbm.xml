@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 19, 2020 9:51:46 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+        <class name="bd.Enseignant" table="ENSEIGNANT" catalog="db_21701558" optimistic-lock="version">
+                <id name="codee" type="int">
+                        <column name="CODEE" />
+                        <generator class="assigned" />
+                </id>
+                <property name="maile" type="string">
+                        <column name="MAILE" length="128" />
+                </property>
+                <property name="nome" type="string">
+                        <column name="NOME" length="128" />
+                </property>
+                <property name="prenome" type="string">
+                        <column name="PRENOME" length="128" />
+                </property>
+                <property name="contacte" type="string">
+                        <column name="CONTACTE" length="128" />
+                </property>
+                <property name="mdpe" type="string">
+                        <column name="MDPE" length="128" />
+                </property>
+                <property name="photo" type="string">
+                        <column name="photo" length="100" />
+                </property>
+                <set name="courses" table="DISPENSER" inverse="false" lazy="true" fetch="select">
+                        <key>
+                                <column name="CODEE" not-null="true" />
+                        </key>
+                        <many-to-many entity-name="bd.Cours">
+                                <column name="CODEC" not-null="true" />
+                        </many-to-many>
+                </set>
+                <set name="creneaus" table="CRENEAU" inverse="true" lazy="true" fetch="select">
+                        <key>
+                                <column name="CODEE" not-null="true" />
+                        </key>
+                        <one-to-many class="bd.Creneau" />
+                </set>
+                <set name="formations" table="ETRERESPONSABLE" inverse="false" lazy="true" fetch="select">
+                        <key>
+                                <column name="CODEE" not-null="true" />
+                        </key>
+                        <many-to-many entity-name="bd.Formation">
+                                <column name="CODEF" not-null="true" />
+                        </many-to-many>
+                </set>
+        </class>
+</hibernate-mapping>

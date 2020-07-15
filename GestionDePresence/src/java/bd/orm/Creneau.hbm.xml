@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 19, 2020 9:51:46 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="bd.Creneau" table="CRENEAU" catalog="db_21701558" optimistic-lock="version">
+        <id name="codecre" type="java.lang.Integer">
+            <column name="CODECRE" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="cours" class="bd.Cours" fetch="select">
+            <column name="CODEC" not-null="false" />
+        </many-to-one>
+        <many-to-one name="enseignant" class="bd.Enseignant" fetch="select">
+            <column name="CODEE" not-null="false" />
+        </many-to-one>
+        <many-to-one name="groupe" class="bd.Groupe" fetch="select">
+            <column name="CODEG" not-null="false" />
+        </many-to-one>
+        <property name="datecre" type="date">
+            <column name="DATECRE" length="10" not-null="false" />
+        </property>
+        <property name="nomcre" type="string">
+            <column name="NOMCRE"  not-null="false" />
+        </property>
+        <property name="dureecre" type="java.lang.Long">
+            <column name="DUREECRE"  not-null="false" />
+        </property>
+        <property name="heuredeb" type="time">
+            <column name="HEUREDEB" length="8"  not-null="false" />
+        </property>
+        <property name="typeactivitecre" type="string">
+            <column name="TYPEACTIVITECRE" length="128" not-null="false" />
+        </property>
+        <set name="etreprersenters" table="ETREPRERSENTER" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="CODECRE" not-null="false" />
+            </key>
+            <one-to-many class="bd.Etreprersenter" />
+        </set>
+    </class>
+</hibernate-mapping>

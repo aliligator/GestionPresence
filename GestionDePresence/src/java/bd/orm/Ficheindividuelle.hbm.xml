@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 19, 2020 9:51:46 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="bd.Ficheindividuelle" table="FICHEINDIVIDUELLE" catalog="db_21701558" optimistic-lock="version">
+         <id name="codefi" type="java.lang.Integer">
+            <column name="CODEFI" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="etudiant" class="bd.Etudiant" fetch="select">
+            <column name="NUMETUDIANT" not-null="true" />
+        </many-to-one>
+        <property name="etatvalide" type="java.lang.Boolean">
+            <column name="ETATVALIDE" />
+        </property>
+        <property name="attestation" type="string">
+            <column name="ATTESTATION" length="128" />
+        </property>
+               <property name="urlfic" type="string">
+            <column name="URLFIC" length="128" />
+        </property>
+               <property name="moisfiche" type="string">
+            <column name="MOISFICHE" length="128" />
+        </property>
+               <property name="anneefiche" type="string">
+            <column name="ANNEEFICHE" length="128" />
+        </property>
+    </class>
+</hibernate-mapping>
