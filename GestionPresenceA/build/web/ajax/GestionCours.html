@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+     <title>Gestion Enseignant</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="ajax/cssPageGestion.css" type="text/css" />
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <script type="text/JavaScript" src="ajax/GestionCours.js"></script>
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script>
+            $( function() {
+              $( "#datepicker" ).datepicker({ dateFormat: 'yy-mm-dd' }).value;
+            } );
+        </script>
+        
+        
+        <body>
+            <ul>
+                <li><a href="GestionEnseignant">GestionEnseignant</a></li>
+                <li><a href="GestionEtudiant">GestionEtudiant</a></li>
+                <li><a href="" class="active">GestionCours</a></li>
+                <li><a href="GestionPeriode">GestionP&eacuteriode</a></li>
+                <li><a href="validerResp">Consulter feuille emargement</a></li>
+                <li><a href="login">D&eacuteconnecter</a></li>
+            </ul>
+            <div class="info_choisir" style="margin-top: 20px">
+                    <span class=""> Choisir formation </span>
+                    <select name="formation" id="formation">
+                        <option value="Formation">Formation</option>
+                        <option value="MIAGEIPM"> IPM</option>
+                        <option value="MIAGEISIAD"> ISIAD </option>
+                    </select>
+                </div>
+               
+                <div class="info_choisir">
+                 <span> Liste Cours: </span>
+                    <select name="cours" id="cours">
+
+                    </select>
+                 
+                 </div><br/>
+                 <input type="button" class="btn_v" id ="btn_supprimer" value="Supprimer" /><br/>
+            <span> Libelle Cours </span><input type="text" id="nomC" style="width:150px" onkeyup="this.value=this.value.replace(/[^a-zA-Z, ]+/g,'')"><br/>
+            <span id ="verifPersonneRes"></span><br/>
+            <div>
+                <input type="button" id ="btn_ajouter" class="btn_v" value="Ajouter" disabled="disabled" />
+                
+            </div>
+            
+            
+        </body>
+</html>
