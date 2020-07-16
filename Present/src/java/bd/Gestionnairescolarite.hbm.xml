@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 16 juil. 2020 15:28:01 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="bd.Gestionnairescolarite" table="gestionnairescolarite" catalog="gestionpresence" optimistic-lock="version">
+        <id name="codegs" type="java.lang.Integer">
+            <column name="CODEGS" />
+            <generator class="identity" />
+        </id>
+        <property name="mailgs" type="string">
+            <column name="MAILGS" length="128" />
+        </property>
+        <property name="mdpgs" type="string">
+            <column name="MDPGS" length="128" />
+        </property>
+        <property name="nomgs" type="string">
+            <column name="NOMGS" length="128" />
+        </property>
+        <property name="prenomgs" type="string">
+            <column name="PRENOMGS" length="128" />
+        </property>
+        <property name="telgs" type="string">
+            <column name="TELGS" length="128" />
+        </property>
+        <set name="formations" table="gerer" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="CODEGS" not-null="true" />
+            </key>
+            <many-to-many entity-name="bd.Formation">
+                <column name="CODEF" not-null="true" />
+            </many-to-many>
+        </set>
+    </class>
+</hibernate-mapping>

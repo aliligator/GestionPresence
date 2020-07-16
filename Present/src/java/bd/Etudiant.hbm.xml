@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 16 juil. 2020 15:28:01 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="bd.Etudiant" table="etudiant" catalog="gestionpresence" optimistic-lock="version">
+        <id name="numetudiant" type="int">
+            <column name="NUMETUDIANT" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="formation" class="bd.Formation" fetch="select">
+            <column name="CODEF" not-null="true" />
+        </many-to-one>
+        <property name="mailetu" type="string">
+            <column name="MAILETU" length="128" />
+        </property>
+        <property name="mdpetu" type="string">
+            <column name="MDPETU" length="128" />
+        </property>
+        <property name="nometu" type="string">
+            <column name="NOMETU" length="128" />
+        </property>
+        <property name="prenometu" type="string">
+            <column name="PRENOMETU" length="128" />
+        </property>
+        <property name="photoetu" type="string">
+            <column name="PHOTOETU" length="128" />
+        </property>
+        <property name="adressesoc" type="string">
+            <column name="ADRESSESOC" length="128" />
+        </property>
+        <property name="mailsoc" type="string">
+            <column name="MAILSOC" length="128" />
+        </property>
+        <property name="raisonsoc" type="string">
+            <column name="RAISONSOC" length="128" />
+        </property>
+        <property name="typeetu" type="string">
+            <column name="TYPEETU" length="128" />
+        </property>
+        <set name="groupes" table="appartenirgroupe" inverse="false" lazy="true" fetch="select">
+            <key>
+                <column name="NUMETUDIANT" not-null="true" />
+            </key>
+            <many-to-many entity-name="bd.Groupe">
+                <column name="CODEG" not-null="true" />
+            </many-to-many>
+        </set>
+        <set name="etrepresents" table="etrepresent" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="NUMETUDIANT" not-null="true" />
+            </key>
+            <one-to-many class="bd.Etrepresent" />
+        </set>
+        <set name="ficheindividuelles" table="ficheindividuelle" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="NUMETUDIANT" not-null="true" />
+            </key>
+            <one-to-many class="bd.Ficheindividuelle" />
+        </set>
+    </class>
+</hibernate-mapping>

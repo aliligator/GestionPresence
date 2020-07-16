@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 16 juil. 2020 15:28:01 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="bd.Creneau" table="creneau" catalog="gestionpresence" optimistic-lock="version">
+        <id name="codecre" type="java.lang.Integer">
+            <column name="CODECRE" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="cours" class="bd.Cours" fetch="select">
+            <column name="CODEC" />
+        </many-to-one>
+        <many-to-one name="enseignant" class="bd.Enseignant" fetch="select">
+            <column name="CODEE" />
+        </many-to-one>
+        <many-to-one name="groupe" class="bd.Groupe" fetch="select">
+            <column name="CODEG" />
+        </many-to-one>
+        <property name="datecre" type="date">
+            <column name="DATECRE" length="10" />
+        </property>
+        <property name="dureecre" type="java.lang.Integer">
+            <column name="DUREECRE" />
+        </property>
+        <property name="heuredeb" type="time">
+            <column name="HEUREDEB" length="8" />
+        </property>
+        <property name="typeactivitecre" type="string">
+            <column name="TYPEACTIVITECRE" length="128" />
+        </property>
+        <set name="etrepresents" table="etrepresent" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="CODECRE" not-null="true" />
+            </key>
+            <one-to-many class="bd.Etrepresent" />
+        </set>
+    </class>
+</hibernate-mapping>

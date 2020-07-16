@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 16 juil. 2020 15:28:01 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="bd.Enseignant" table="enseignant" catalog="gestionpresence" optimistic-lock="version">
+        <id name="codee" type="int">
+            <column name="CODEE" />
+            <generator class="assigned" />
+        </id>
+        <property name="maile" type="string">
+            <column name="MAILE" length="128" />
+        </property>
+        <property name="nome" type="string">
+            <column name="NOME" length="128" />
+        </property>
+        <property name="prenome" type="string">
+            <column name="PRENOME" length="128" />
+        </property>
+        <property name="tele" type="string">
+            <column name="TELE" length="128" />
+        </property>
+        <property name="mdpe" type="string">
+            <column name="MDPE" length="128" />
+        </property>
+        <property name="photo" type="string">
+            <column name="PHOTO" length="100" not-null="true" />
+        </property>
+        <set name="courses" table="dispenser" inverse="false" lazy="true" fetch="select">
+            <key>
+                <column name="CODEE" not-null="true" />
+            </key>
+            <many-to-many entity-name="bd.Cours">
+                <column name="CODEC" not-null="true" />
+            </many-to-many>
+        </set>
+        <set name="creneaus" table="creneau" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="CODEE" />
+            </key>
+            <one-to-many class="bd.Creneau" />
+        </set>
+        <set name="formations" table="etreresponsable" inverse="false" lazy="true" fetch="select">
+            <key>
+                <column name="CODEE" not-null="true" />
+            </key>
+            <many-to-many entity-name="bd.Formation">
+                <column name="CODEF" not-null="true" />
+            </many-to-many>
+        </set>
+    </class>
+</hibernate-mapping>
