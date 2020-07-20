@@ -35,6 +35,21 @@ public class Creneau  implements java.io.Serializable {
        this.typeactivitecre = typeactivitecre;
        this.etrepresents = etrepresents;
     }
+
+    public Creneau(Cours cours, Enseignant enseignant, Groupe groupe, Date datecre, Integer dureecre, Date heuredeb, String typeactivitecre) {
+        this.cours = cours;
+        this.enseignant = enseignant;
+        this.groupe = groupe;
+        this.datecre = datecre;
+        this.dureecre = dureecre;
+        this.heuredeb = heuredeb;
+        this.typeactivitecre = typeactivitecre;
+    }
+    
+    
+    
+
+
    
     public Integer getCodecre() {
         return this.codecre;

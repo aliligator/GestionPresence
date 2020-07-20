@@ -24,7 +24,7 @@
                                         <a  style="color:#d9d9d9;" id="user" class="navbar-brand" href="#" >
                                                            <%                                       int idResponsable = (int) request.getSession().getAttribute("idenseig");
                                             String photo = (String) request.getSession().getAttribute("photo");
-                                            out.println("<img src='resource/images/portaits/ens/" + photo + "' width='30' height='30' class='d-inline-block align-top' >");
+                                            out.println("<img src='ressource/images/portaits/ens/" + photo + "' width='30' height='30' class='d-inline-block align-top' >");
                                             //String nomUser = (String) request.getSession().getAttribute("nomuser");
                                             out.println(nomUser);
                                         %>
@@ -35,7 +35,7 @@
                                                         <a  style="color:white;" class="nav-link" href="#">Faire appel</a>
                                                 </li>
                                                 <li class="nav-item ">
-                                                        <a  style="color:#d9d9d9;" class="nav-link" href="consult">Consulter les appels</a>
+                                                        <a  style="color:#d9d9d9;" class="nav-link" href="consulter">Consulter les appels</a>
                                                 </li>
                                                 <li class="nav-item ">
                                                         <a  style="color:#d9d9d9;" class="nav-link" href="index.jsp">Se d&eacute;connecter</a>
@@ -49,7 +49,7 @@
 
 
                 <!--form-->
-                <form id="formList"  onsubmit="return validerForm()" action="ServletComfirmAppel" method="get" accept-charset="UTF-8">
+                <form id="formList"  onsubmit="return validerForm()" action="confirmAppel" method="get" accept-charset="UTF-8">
                         <div class="container">
                                 <!--choisir formation ect-->
                                 <div class="container" id="affecterCreneau">
@@ -69,8 +69,8 @@
                                                 <div class="col-12 col-sm-6 col-md-6 col-lg-6">
                                                         <select id="saisirAct" name="saisirAct" class="form-control ">
                                                                 <option value="none" selected>Activit&eacute;...</option>
-                                                                <option value="1">S&eacute;ance</option>
-                                                                <option value="2">Examen</option>
+                                                                <option value="1">Enseignement</option>
+                                                                <option value="2">Projet</option>
                                                         </select>
                                                 </div>
 
@@ -127,12 +127,12 @@
                                                                         <table class="justify-content-center table  ">
                                                                                 <thead>
                                                                                         <tr>
-                                                                                                <th style="width:100px">Pr&eacute;s</th>
+                                                                                                <th style="width:100px">Pr&eacute;sence</th>
                                                                                                 <th>Nom</th>
                                                                                                 <th>Pr&eacute;nom</th>
                                                                                                 <th>Form</th>
                                                                                                 <th>Pr&eacute;c</th>
-                                                                                                <th>Abs/Abj/R</th>
+                                                                                                <th>Etat</th>
                                                                                         </tr>
                                                                                 </thead>
                                                                                 <tbody id="listEtudiant">
@@ -153,7 +153,7 @@
                                                         </div>
                                                         <br>
                                                         <div class="row justify-content-center">
-                                                                <input id="ok" class="btn btn-primary" type="submit" value="valider" >
+                                                                <input id="ok" class="btn btn-primary" type="submit" value="Valider" >
                                                         </div>
                                                 </div>
 

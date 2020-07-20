@@ -184,11 +184,10 @@ function putEtudiant(xhr) {
                 var row = "<tr class='table-success' id=etu" + id + " >\n\
                                         <td class=colPresence> \n\
                                                 <select class='form-control' id=etat" + id + " name='preEtu[]' onchange=' faireAppel(id)' >\n\
-                                                        <option selected value=1>P</option>\n\
+                                                        <option selected value=1>Pr&eacute;sent</option>\n\
                                                         <option value=2>Absent</option>\n\
-                                                        <option value=3>Abj</option>\n\
-                                                        <option value=4>R</option>\n\
                                                 </select>\n\
+\n\
                                         </td>\n\
                                         <td onclick=' afficherPortait(" + id + ")'>" + nom + "</td>\n\
                                         <td onclick=' afficherPortait(" + id + ")'>" + prenom + "</td>\n\
@@ -237,7 +236,7 @@ function getNowTimeSeg(duree) {
         return heureEnFormat;
 }
 /**
- * afficher la présence en couleur : pre : vert, retard : jaune, abs : rouge, abj : grey. 
+ * afficher la présence en couleur : pre : vert, retard : jaune, abs : rouge, pr : grey. 
  * @param {type} etatId   format : "etat1", "etat2"
  * @returns {undefined}
  */
@@ -250,11 +249,7 @@ function faireAppel(etatId) {
                 classe = "table-warning";
         } else if (pre === "2") {
                 classe = "table-danger";
-        } else if (pre === "3") {
-                classe = "table-secondary";
-        } else if (pre === "1") {
-                classe = "table-success";
-        }
+        } 
         rowEtu.setAttribute("class", classe);
 }
 
@@ -317,11 +312,11 @@ function validerForm() {
                 alert("Veuillez choisir le type d'activit\351");
                 return false;
         }
-        if (g === null || g === "none")
-        {
-                alert("Veuillez choisir le groupe");
-                return false;
-        }
+//        if (g === null || g === "none")
+//        {
+//                alert("Veuillez choisir le groupe");
+//                return false;
+//        }
         if (d === null || d === "")
         {
                 alert("Veuillez choisir la date");

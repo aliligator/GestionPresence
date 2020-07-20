@@ -12,6 +12,22 @@
         <servlet-name>vueEnseignant</servlet-name>
         <jsp-file>/jsp/vueEnseignant.jsp</jsp-file>
     </servlet>
+    <servlet>
+        <servlet-name>ServletConfirmAppel</servlet-name>
+        <servlet-class>servlets.ServletConfirmAppel</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServletAppel</servlet-name>
+        <servlet-class>servlets.ServletAppel</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>alertConfirm</servlet-name>
+        <jsp-file>/alertConfirm.html</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>ConsulterAppel</servlet-name>
+        <jsp-file>/jsp/ConsulterAppel.jsp</jsp-file>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ServletLogin</servlet-name>
         <url-pattern>/login</url-pattern>
@@ -24,10 +40,25 @@
         <servlet-name>vueEnseignant</servlet-name>
         <url-pattern>/vueenseig</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletConfirmAppel</servlet-name>
+        <url-pattern>/confirmAppel</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletAppel</servlet-name>
+        <url-pattern>/servletAppel</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>alertConfirm</servlet-name>
+        <url-pattern>/alertConfirm</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ConsulterAppel</servlet-name>
+        <url-pattern>/consulter</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
-
 </web-app>

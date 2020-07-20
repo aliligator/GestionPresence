@@ -23,6 +23,14 @@ public class Etrepresent  implements java.io.Serializable {
        this.etudiant = etudiant;
        this.presence = presence;
     }
+
+    public Etrepresent(EtrepresentId id, Creneau creneau, Etudiant etudiant) {
+        this.id = id;
+        this.creneau = creneau;
+        this.etudiant = etudiant;
+    }
+    
+    
    
     public EtrepresentId getId() {
         return this.id;
