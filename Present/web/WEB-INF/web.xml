@@ -8,6 +8,10 @@
         <servlet-name>vueEtudiant</servlet-name>
         <jsp-file>/jsp/vueEtudiant.jsp</jsp-file>
     </servlet>
+    <servlet>
+        <servlet-name>vueEnseignant</servlet-name>
+        <jsp-file>/jsp/vueEnseignant.jsp</jsp-file>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ServletLogin</servlet-name>
         <url-pattern>/login</url-pattern>
@@ -16,12 +20,14 @@
         <servlet-name>vueEtudiant</servlet-name>
         <url-pattern>/vueetu</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>vueEnseignant</servlet-name>
+        <url-pattern>/vueenseig</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
-    <welcome-file-list>
-        <welcome-file>index.html</welcome-file>
-    </welcome-file-list>
+
 </web-app>
