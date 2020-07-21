@@ -143,7 +143,7 @@ public class Bdforcours {
             Bdforcours.connexion();
         }
         ArrayList<String> listeEtudiants = new ArrayList<>();
-        String sql3 = " select cr.DATECRE, etu.NOMETU, etu.PRENOMETU, etu.TYPEETU, ep.PRESENCE from ETUDIANT etu, ETREPRERSENTER ep, CRENEAU cr, COURS c where etu.NUMETUDIANT = ep.NUMETUDIANT "
+        String sql3 = " select cr.DATECRE, etu.NOMETU, etu.PRENOMETU, etu.TYPEETU, ep.PRESENCE from ETUDIANT etu, ETREPRESENT ep, CRENEAU cr, COURS c where etu.NUMETUDIANT = ep.NUMETUDIANT "
                 + "and ep.CODECRE = cr.CODECRE "
                 + "and c.CODEC = cr.CODEC "
                 + "and c.NomC = ? "
@@ -179,7 +179,7 @@ public class Bdforcours {
             Bdforcours.connexion();
         }
         ArrayList<String> listeEtudiants = new ArrayList<>();
-        String sql3 = " select cr.DATECRE, etu.NOMETU, etu.PRENOMETU, etu.TYPEETU, ep.PRESENCE from ETUDIANT etu, ETREPRERSENTER ep, CRENEAU cr, COURS c where etu.NUMETUDIANT = ep.NUMETUDIANT "
+        String sql3 = " select cr.DATECRE, etu.NOMETU, etu.PRENOMETU, etu.TYPEETU, ep.PRESENCE from ETUDIANT etu, ETREPRESENT ep, CRENEAU cr, COURS c where etu.NUMETUDIANT = ep.NUMETUDIANT "
                 + "and ep.CODECRE = cr.CODECRE "
                 + "and c.CODEC = cr.CODEC "
                 + "and c.CODEC = ? "
@@ -208,7 +208,7 @@ public class Bdforcours {
             Bdforcours.connexion();
         }
         ArrayList<String> listegroupe = new ArrayList<>();
-        String sqlg = "select distinct g.CODEG,g.LIBELLEG from GROUPE g, CORESSPONDRE cs, COURS c, FORMATION f, ETRERESPONSABLE er where g.CODEG = cs.CODEG "
+        String sqlg = "select distinct g.CODEG,g.LIBELLEG from GROUPE g, CORRESPONDRE cs, COURS c, FORMATION f, ETRERESPONSABLE er where g.CODEG = cs.CODEG "
                 + "and cs.CODEC = c.CODEC "
                 + "and c.CODEF = f.CODEF "
                 + "and f.CODEF = er.CODEF "
@@ -405,7 +405,7 @@ public class Bdforcours {
         if (Bdforcours.cx == null) {
             Bdforcours.connexion();
         }
-        String sqlag = "INSERT INTO CORESSPONDRE(CODEC,CODEG) VALUES(?,?) ";
+        String sqlag = "INSERT INTO CORRESPONDRE(CODEC,CODEG) VALUES(?,?) ";
         // Ouverture de l'espace de requête
         try (PreparedStatement st = Bdforcours.cx.prepareStatement(sqlag)) {
             /*----- Insertion du message -----*/

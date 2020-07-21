@@ -70,7 +70,7 @@ public class ServletUploadXls extends HttpServlet {
         String imp = reader.readLine();
         System.out.println(sb.toString());
 
-        System.out.println("radio botton : " + imp);
+        System.out.println("radio button : " + imp);
         // On récupère le champ du fichier
         Part part = request.getPart("fichier");
         System.out.println("fichier : " + part.getContentType());

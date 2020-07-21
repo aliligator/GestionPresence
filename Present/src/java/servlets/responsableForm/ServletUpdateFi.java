@@ -24,7 +24,7 @@ import org.hibernate.Transaction;
  */
 public class ServletUpdateFi extends HttpServlet {
 
-    public static final String DELETE_DIR = "resource/fiche_individuel";
+    public static final String DELETE_DIR = "ressource/fiche_individuel";
     
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException 
@@ -52,7 +52,7 @@ public class ServletUpdateFi extends HttpServlet {
               System.out.println(filePath);
               
               //supprimer 
-              FileUtils.delete(filePath);
+              //FileUtils.delete(filePath);
               t.commit();
     }
     

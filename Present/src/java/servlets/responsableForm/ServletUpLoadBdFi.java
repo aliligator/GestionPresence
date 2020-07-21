@@ -73,7 +73,7 @@ public class ServletUpLoadBdFi extends HttpServlet {
 
             try {
                 Ficheindividuelle fiche = (Ficheindividuelle) session.load(Ficheindividuelle.class, idfi);
-                fiche.setEtatvalide(Boolean.TRUE);
+                fiche.setEtatvalide(1);
                 fiche.setUrlfic(path);
                 out.println("Bien changé");
                 request.getRequestDispatcher("vueficheres").forward(request, response);
