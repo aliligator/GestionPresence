@@ -17,11 +17,13 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+
 import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.CellType;
+
 
 /**
  *
@@ -31,9 +33,9 @@ public class Importations {
 
     private static Connection cx = null;
 
-    private static final String URL = "jdbc:mysql://localhost:3306/db_21701558?zeroDateTimeBehavior=convertToNull&serverTimezone=UTC";
-    private static final String LOGIN = "root";
-    private static final String PASSWORD = "";
+    private static final String URL = "jdbc:mysql://localhost:3306/gestionpresence";
+    private static final String LOGIN = "gestionnaire";
+    private static final String PASSWORD = "slucropluvo6";
 
     //Connexion à la bd 
     private static void connexion() throws ClassNotFoundException, SQLException {
