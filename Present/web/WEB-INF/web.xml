@@ -28,6 +28,18 @@
         <servlet-name>ConsulterAppel</servlet-name>
         <jsp-file>/jsp/ConsulterAppel.jsp</jsp-file>
     </servlet>
+    <servlet>
+        <servlet-name>vueResponsable</servlet-name>
+        <jsp-file>/jsp/vueResponsable.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>AffecterEtudiant</servlet-name>
+        <jsp-file>/jsp/AffecterEtudiant.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>ImportationDonnees</servlet-name>
+        <jsp-file>/jsp/importationDonnees.jsp</jsp-file>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ServletLogin</servlet-name>
         <url-pattern>/login</url-pattern>
@@ -55,6 +67,18 @@
     <servlet-mapping>
         <servlet-name>ConsulterAppel</servlet-name>
         <url-pattern>/consulter</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>vueResponsable</servlet-name>
+        <url-pattern>/vuerespon</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AffecterEtudiant</servlet-name>
+        <url-pattern>/affectergroupe</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ImportationDonnees</servlet-name>
+        <url-pattern>/importdonnees</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

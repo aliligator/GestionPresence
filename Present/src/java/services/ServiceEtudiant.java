@@ -6,6 +6,7 @@
 package services;
 
 
+import bd.Appartenirgroupe;
 import bd.Etudiant;
 import bd.Formation;
 import bd.Groupe;
@@ -54,19 +55,19 @@ public class ServiceEtudiant {
      * @param g
      * @return
 //     */
-//    static public int estDansGroupe(Session session, int numEtu, Groupe g) {
-//        String sql = "select * from appartenirgroupe ap where ap.numetudiant = ? and ap.codeg =?";
-//        List<Appartenirgroupe> lstE = session.createSQLQuery(sql)//
-//                .addEntity(Appartenirgroupe.class)//
-//                .setParameter(0, numEtu).
-//                setParameter(1, g.getCodeg())//
-//                .list();
-//        if (lstE == null || lstE.size() == 0) {
-//            return 0;
-//        } else {
-//            return 1;
-//        }
-//    }
+    static public int estDansGroupe(Session session, int numEtu, Groupe g) {
+        String sql = "select * from appartenirgroupe ap where ap.numetudiant = ? and ap.codeg =?";
+        List<Appartenirgroupe> lstE = session.createSQLQuery(sql)//
+                .addEntity(Appartenirgroupe.class)//
+                .setParameter(0, numEtu).
+                setParameter(1, g.getCodeg())//
+                .list();
+        if (lstE == null || lstE.size() == 0) {
+            return 0;
+        } else {
+            return 1;
+        }
+    }
 
     static public ArrayList<Etudiant> getEtudiantsForm(Session session, Formation formation) {
         String sql = "select * from etudiant e where e.codef=?";
