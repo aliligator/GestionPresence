@@ -28,7 +28,7 @@ import org.hibernate.Transaction;
  */
 public class ServiceCreneau {
 
-    public void creerCreneau(Cours cours, Enseignant enseignant, Groupe groupe, Date datecre, Long dureecre, Date heuredeb, String typeactivitecre, Set etreprersenters) {
+    public void creerCreneau(Cours cours, Enseignant enseignant, Groupe groupe, Date datecre, Long dureecre, Date heuredeb, String typeactivitecre, Set Etrepresents) {
 
     }
 
@@ -76,7 +76,7 @@ public class ServiceCreneau {
      */
     static public ArrayList<Creneau> getCreneaux(Session session, Cours cours, Etudiant e) {
         // les creneau que cet etudiant participe
-        String sql1 = "select * from creneau c, Etreprersenter pre where c.codec= :codec and pre.NUMETUDIANT= :nume and  pre.codecre=c.codecre";
+        String sql1 = "select * from creneau c, Etrepresent pre where c.codec= :codec and pre.NUMETUDIANT= :nume and  pre.codecre=c.codecre";
 
         List<Creneau> lstCre = session.createSQLQuery(sql1)//
                 .addEntity(Creneau.class)//

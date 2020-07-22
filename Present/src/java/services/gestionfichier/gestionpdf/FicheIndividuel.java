@@ -93,7 +93,7 @@ public class FicheIndividuel {
         this.chemin = cheminRacine + File.separator + RELATIVE_PATH_FICHE_EMARGEMENT_GENERE;
         this.url = cheminRacine + File.separator + RELATIVE_PATH_FICHE_EMARGEMENT_GENERE + File.separator + nomFiche;
         System.out.println("démarrage de la  création : " + url);
-        System.out.println("Segement du jour :  début du matin" + MATIN + "---> midi" + MIDI + "---> soir" + SOIR);
+        System.out.println("Segment du jour :  début du matin" + MATIN + "---> midi" + MIDI + "---> soir" + SOIR);
 
         //si l'emplacement n'existe pas alors on le crée.
         File repertoire = new File(cheminRacine + File.separator + RELATIVE_PATH_FICHE_EMARGEMENT_GENERE);
@@ -152,26 +152,26 @@ public class FicheIndividuel {
 
             //matin
             // pre E
-            preJour[0] = services.ServiceEtudiant.getMinTotalPre(session, etudiant, MATIN, MIDI, d, "PRESENCE", "cours");
+            preJour[0] = services.ServiceEtudiant.getMinTotalPre(session, etudiant, MATIN, MIDI, d, "PRESENT", "cours");
             s[0] = preJour[0] == 0 ? "" : toHeure(preJour[0].intValue());
             // pre D
-            preJour[1] = services.ServiceEtudiant.getMinTotalPre(session, etudiant, MATIN, MIDI, d, "PRESENCE", "documentation");
+            preJour[1] = services.ServiceEtudiant.getMinTotalPre(session, etudiant, MATIN, MIDI, d, "PRESENT", "documentation");
             s[1] = preJour[1] == 0 ? "" : toHeure(preJour[1].intValue());
             // abs 
-            preJour[2] = services.ServiceEtudiant.getMinTotalPre(session, etudiant, MATIN, MIDI, d, "ABS", "documentation")
+            preJour[2] = services.ServiceEtudiant.getMinTotalPre(session, etudiant, MATIN, MIDI, d, "ABSENT", "documentation")
                     + services.ServiceEtudiant.getMinTotalPre(session, etudiant, MATIN, MIDI, d, "ABJ", "documentation")
                     + services.ServiceEtudiant.getMinTotalPre(session, etudiant, MATIN, MIDI, d, "ABS", "cours")
                     + services.ServiceEtudiant.getMinTotalPre(session, etudiant, MATIN, MIDI, d, "ABJ", "cours");
             s[2] = preJour[2] == 0 ? "" : toHeure(preJour[2].intValue());
             //après midi
             //pre E
-            preJour[3] = services.ServiceEtudiant.getMinTotalPre(session, etudiant, MIDI, SOIR, d, "PRESENCE", "cours");
+            preJour[3] = services.ServiceEtudiant.getMinTotalPre(session, etudiant, MIDI, SOIR, d, "PRESENT", "cours");
             s[3] = preJour[3] == 0 ? "" : toHeure(preJour[3].intValue());
             //pre D
-            preJour[4] = services.ServiceEtudiant.getMinTotalPre(session, etudiant, MIDI, SOIR, d, "PRESENCE", "documentation");
+            preJour[4] = services.ServiceEtudiant.getMinTotalPre(session, etudiant, MIDI, SOIR, d, "PRESENT", "documentation");
             s[4] = preJour[4] == 0 ? "" : toHeure(preJour[4].intValue());
             //abs
-            preJour[5] = services.ServiceEtudiant.getMinTotalPre(session, etudiant, MIDI, SOIR, d, "ABS", "documentation")
+            preJour[5] = services.ServiceEtudiant.getMinTotalPre(session, etudiant, MIDI, SOIR, d, "ABSENT", "documentation")
                     + services.ServiceEtudiant.getMinTotalPre(session, etudiant, MIDI, SOIR, d, "ABJ", "documentation")
                     + services.ServiceEtudiant.getMinTotalPre(session, etudiant, MIDI, SOIR, d, "ABS", "cours")
                     + services.ServiceEtudiant.getMinTotalPre(session, etudiant, MIDI, SOIR, d, "ABJ", "cours");
@@ -364,9 +364,9 @@ public class FicheIndividuel {
             jourDuMois++;
         }
         Height(corp1, 30f);
-        Text lg1 = new Text("E : pour enseignants\n(TD-TP-PT -accompagnement ou examen\n"
+        Text lg1 = new Text("E : pour Enseignement\n(TD-TP-PT -accompagnement ou examen\n"
                 + "D : pour Documentation sur site\n"
-                + "Abs : pour absence");
+                + "Abs : pour Absence");
         Cell legend1 = new Cell(3, 5).add(new Paragraph("*Nombre d'heure par type d'activité : \n"))
                 .add(new Paragraph(lg1).setFixedLeading(7));
 
@@ -445,7 +445,7 @@ public class FicheIndividuel {
         Height(corp2, 30f);
         doc.add(corp2);
         doc.close();
-        System.out.println("fiche créé : " + url);
+        System.out.println("Fiche créé : " + url);
     }
 
     private String toHeure(int l) {

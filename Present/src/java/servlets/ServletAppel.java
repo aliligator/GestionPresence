@@ -45,8 +45,9 @@ public class ServletAppel extends HttpServlet {
 
             if (load.equals("2")) {
                 //formation
+               
                 if (!formation.equals("none")) {
-                    Formation f = (Formation) sessH.load(Formation.class, Integer.valueOf(formation));
+                     Formation f = (Formation) sessH.load(Formation.class, Integer.valueOf(formation));
                     optEtudiants.removeAll(optEtudiants);
                     //Formation f = (Formation) sessH.load(Formation.class, Integer.valueOf(formation));
                     optEtudiants = services.ServiceEtudiant.getEtudiantsForm(sessH, f);
@@ -54,12 +55,12 @@ public class ServletAppel extends HttpServlet {
                 //groupe
                 if (!groupe.equals("none")) {
                     Groupe g = (Groupe) sessH.load(Groupe.class, Integer.valueOf(groupe));
-                    optEtudiants.removeAll(optEtudiants);
+                    //optEtudiants.removeAll(optEtudiants);
                     optEtudiants = services.ServiceEtudiant.getEtudiants(sessH, g);
                 }
-                Cours c = null;
+                
                 if (!cours.equals("none")) {
-                    c = (Cours) sessH.load(Cours.class, Integer.valueOf(cours));
+                    Cours c = (Cours) sessH.load(Cours.class, Integer.valueOf(cours));
                 }
 
                 //list Etudiant
@@ -97,7 +98,7 @@ public class ServletAppel extends HttpServlet {
                             int nbAbs = services.ServicePresence.getNbAbs(sessH, e, c);
                             int nbAbj = services.ServicePresence.getNbAbj(sessH, e, c);
                             int nbR = services.ServicePresence.getNbRetard(sessH, e, c);
-                            out.print("<nbpre>" + nbAbs + "/" + nbAbj + "/" + nbR + "</nbpre>");
+                            out.print("<nbpre>" + nbAbs + "</nbpre>");
                         }
                     }
 

@@ -51,6 +51,7 @@ public class ServletChoisirGroupe extends HttpServlet {
             int idResponsable = (int) sessionHttp.getAttribute("idenseig");
             out.println("<?xml version=\"1.0\"?>");
             out.println("<liste_groupe>");
+          
             ArrayList<String> lstgrp = Bdforcours.getGroup(idResponsable);
             for (int i = 0; i < lstgrp.size();) {
                 out.println("<id>" + lstgrp.get(i) + "</id>");

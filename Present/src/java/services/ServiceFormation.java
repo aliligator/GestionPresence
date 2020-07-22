@@ -26,7 +26,7 @@ public class ServiceFormation {
     }
 
     static public ArrayList<Formation> getFormation(Session session, Enseignant ens) {
-        String sql = "select * from formation f , etreresponsable er where f.codef=er.codef and er.codee=?";
+        String sql = " select * from formation f , etreresponsable er where f.codef=er.codef and er.codee=? ";
         Query query = session.createSQLQuery(sql).addEntity(Formation.class).setParameter(0, ens.getCodee());
         List<Formation> lstF = query.list();
         return (ArrayList<Formation>) lstF;

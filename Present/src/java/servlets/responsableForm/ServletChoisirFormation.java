@@ -24,7 +24,7 @@ import org.hibernate.Transaction;
 
 /**
  *
- * @author Bonso
+ * @author 
  */
 public class ServletChoisirFormation extends HttpServlet {
 
@@ -49,21 +49,20 @@ public class ServletChoisirFormation extends HttpServlet {
             //get sessionHttp
             HttpSession sessionHttp = request.getSession();
             /*----- Récupération des paramètres -----*/
-            //  int idResponsable = (int) sessionHttp.getAttribute("idenseig");
+
+            int idResponsable = (int) sessionHttp.getAttribute("idenseig");
+
             out.println("<?xml version=\"1.0\"?>");
             out.println("<liste_formation>");
-            Enseignant ens = (Enseignant) session.load(Enseignant.class, 1);
-//            ArrayList<String> lstform = Bdforcours.getFormation(1);
-            ArrayList<Formation> lstform = services.ServiceFormation.getFormation(session, ens);
-//            for (int i = 0; i < lstform.size();) {
-//                out.println("<id>" + lstform.get(i) + "</id>");
-//                out.println("<formation>" + lstform.get(i + 1) + "</formation>");
-//                i = i + 2;
-//            }
-            for (Formation formation : lstform) {
+            Enseignant ens = (Enseignant) session.load(Enseignant.class, idResponsable);
 
+            ArrayList<Formation> lstform = services.ServiceFormation.getFormation(session, ens);
+
+            for (Formation formation : lstform) {
+                out.println("<option >");
                 out.println("<id>" + formation.getCodef() + "</id>");
                 out.println("<formation>" + formation.getNomf() + "</formation>");
+                out.println("</option>");
             }
             out.println("</liste_formation>");
         }

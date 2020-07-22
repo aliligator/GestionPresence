@@ -28,7 +28,7 @@ import services.ServiceLogin;
 
 /**
  *
- * @author yeping
+ * @author 
  */
 public class ServletConfirmAppel extends HttpServlet {
 
@@ -97,7 +97,7 @@ public class ServletConfirmAppel extends HttpServlet {
             }
             System.out.println("servlets.ServletConfirmAppel.processRequest() : : : : : :" + ServiceLogin.estResponsable(sessH, idEns));
             if (ServiceLogin.estResponsable(sessH, idEns)) {
-                request.getRequestDispatcher("/confirmeAppelE?ok=ok").forward(request, response);
+                request.getRequestDispatcher("alertConfirm.html").forward(request, response);
             } else {
                 //request.getRequestDispatcher("/alertConfirm?ok=ok").forward(request, response);
                 request.getRequestDispatcher("alertConfirm.html").forward(request, response);

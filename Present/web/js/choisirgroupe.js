@@ -6,6 +6,7 @@ window.onload = function () {
         xhr.onload = function () {
                 if (xhr.status === 200) {
                         var lgp = xhr.responseXML.getElementsByTagName("groupe");
+                        System.out.println(lgp);
                         var lid = xhr.responseXML.getElementsByTagName("id");
                         // On construit les 'options' de notre liste déroulante.
                         var texte = "<option>--</option>";

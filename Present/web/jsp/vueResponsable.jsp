@@ -52,7 +52,7 @@
                                                         </div>
                                                 </li>
                                                 <li class="nav-item ">
-                                                        <a  style="color:#d9d9d9;" class="nav-link" href="resAppel">Faire appel</a>
+                                                        <a  style="color:#d9d9d9;" class="nav-link" href="resappel">Faire appel</a>
                                                 </li>
                                                 <li class="nav-item ">
                                                         <a  style="color:#d9d9d9;" class="nav-link" href="resconsult">Consulter les appels</a>

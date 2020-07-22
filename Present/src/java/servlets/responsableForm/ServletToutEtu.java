@@ -5,6 +5,7 @@
  */
 package servlets.responsableForm;
 
+import bd.HibernateUtil;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -15,6 +16,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 import services.Bdforcours;
 
 /**
@@ -38,12 +42,18 @@ public class ServletToutEtu extends HttpServlet {
             throws ServletException, IOException, ClassNotFoundException, SQLException {
         response.setContentType("application/xml;charset=UTF-8");
         response.setCharacterEncoding("UTF-8");
-
-        // int idResponsable = Integer.parseInt(request.getParameter("idResponsable"));
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        Transaction t = session.beginTransaction();
+  
         try (PrintWriter out = response.getWriter()) {
+            //get sessionHttp
+            HttpSession sessionHttp = request.getSession();
+            /*----- Récupération des paramètres -----*/
+            int idResponsable = (int) sessionHttp.getAttribute("idenseig");
             out.println("<?xml version=\"1.0\"?>");
             out.println("<lstetu>");
-            ArrayList<String> lstetud = Bdforcours.getEtudiantFormation(1);
+            
+            ArrayList<String> lstetud = Bdforcours.getEtudiantFormation(idResponsable);
             for (int i = 0; i < lstetud.size();) {
                 out.println("<etudiant>");
                 out.println("<idE>" + lstetud.get(i) + "</idE>");

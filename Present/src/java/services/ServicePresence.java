@@ -15,7 +15,7 @@ import org.hibernate.Session;
 
 /**
  *
- * @author yeping
+ * @author 
  */
 public class ServicePresence {
 
@@ -160,7 +160,7 @@ public class ServicePresence {
 //        System.out.println(e.getNumetudiant());
 //        System.out.println("nb présence" + getAllPresence(session, e, c).size());
 //
-//        for (Etreprersenter ep : getAllPresence(session, e, c)) {
+//        for (Etrepresent ep : getAllPresence(session, e, c)) {
 //            System.out.println(ep.getPresence());
 //        }
 //        int nbPre = getNbPre(session, e, c);

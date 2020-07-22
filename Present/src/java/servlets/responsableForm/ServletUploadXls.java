@@ -158,8 +158,8 @@ public class ServletUploadXls extends HttpServlet {
     }
 
     private void ecrireFichier(Part part, String nomFichier, String chemin) throws IOException {
-        BufferedInputStream entree = null;
-        BufferedOutputStream sortie = null;
+        BufferedInputStream entree=null;
+        BufferedOutputStream sortie=null;
         try {
             entree = new BufferedInputStream(part.getInputStream(), TAILLE_TAMPON);
             sortie = new BufferedOutputStream(new FileOutputStream(new File(chemin + File.separator + nomFichier)), TAILLE_TAMPON);

@@ -208,10 +208,9 @@ public class Bdforcours {
             Bdforcours.connexion();
         }
         ArrayList<String> listegroupe = new ArrayList<>();
-        String sqlg = "select distinct g.CODEG,g.LIBELLEG from GROUPE g, CORRESPONDRE cs, COURS c, FORMATION f, ETRERESPONSABLE er where g.CODEG = cs.CODEG "
-                + "and cs.CODEC = c.CODEC "
-                + "and c.CODEF = f.CODEF "
-                + "and f.CODEF = er.CODEF "
+        String sqlg = "select distinct g.CODEG,g.LIBELLEG from GROUPE g, FORMATION f, ETRERESPONSABLE er where "
+                + " er.CODEF = f.CODEF "
+                + "and f.CODEF = g.CODEF "
                 + "and er.CODEE = ? "
                 + "ORDER BY g.CODEG ASC";
         try (PreparedStatement st = Bdforcours.cx.prepareStatement(sqlg)) {
@@ -382,15 +381,16 @@ public class Bdforcours {
 
     }
 
-    public static int AjouterGroupe(String libelleG) throws ClassNotFoundException, SQLException {
+    public static int AjouterGroupe(String libelleG,int codef) throws ClassNotFoundException, SQLException {
         if (Bdforcours.cx == null) {
             Bdforcours.connexion();
         }
-        String sqlag = "INSERT INTO GROUPE(LIBELLEG) VALUES(?) ";
+        String sqlag = "INSERT INTO GROUPE(LIBELLEG, CODEF) VALUES(?,?) ";
         // Ouverture de l'espace de requête
         try (PreparedStatement st = Bdforcours.cx.prepareStatement(sqlag, Statement.RETURN_GENERATED_KEYS)) {
             /*----- Insertion du message -----*/
             st.setString(1, libelleG);
+            st.setInt(2,codef);
             st.executeUpdate();
             ResultSet resultSet = st.getGeneratedKeys();
             if (resultSet.next()) {

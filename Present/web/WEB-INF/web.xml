@@ -84,6 +84,30 @@
         <servlet-name>ServletChoisirGroupe</servlet-name>
         <servlet-class>servlets.responsableForm.ServletChoisirGroupe</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AppelResponsable</servlet-name>
+        <jsp-file>/jsp/resAppel.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>ConsulterFicheEtudiant</servlet-name>
+        <jsp-file>/jsp/consulFicheEtu.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>ServletSaisirPres</servlet-name>
+        <servlet-class>servlets.etudiant.ServeletSaisirPres</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServletCrenPres</servlet-name>
+        <servlet-class>servlets.etudiant.ServletCrenPres</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>downloadEtudiant</servlet-name>
+        <jsp-file>/jsp/downloadEtudiant.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>ServletEtuDownload</servlet-name>
+        <servlet-class>servlets.etudiant.ServletEtuDownload</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ServletLogin</servlet-name>
         <url-pattern>/login</url-pattern>
@@ -167,6 +191,30 @@
     <servlet-mapping>
         <servlet-name>ServletChoisirGroupe</servlet-name>
         <url-pattern>/choixgroupe</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AppelResponsable</servlet-name>
+        <url-pattern>/resappel</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ConsulterFicheEtudiant</servlet-name>
+        <url-pattern>/feuilleetu</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletSaisirPres</servlet-name>
+        <url-pattern>/saisirpres</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletCrenPres</servlet-name>
+        <url-pattern>/servletCrenPres</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>downloadEtudiant</servlet-name>
+        <url-pattern>/dowloadEtudiant</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletEtuDownload</servlet-name>
+        <url-pattern>/ServletsEtuDownload</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

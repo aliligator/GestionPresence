@@ -55,7 +55,7 @@ public class ServletUpLoadBdFi extends HttpServlet {
         int idfi = Integer.parseInt(idfiStr);
 
         try (PrintWriter out = response.getWriter()) {
-            String folderName = "resource/fiche_individuel";
+            String folderName = "ressource/fiche_individuel";
             String uploadPath = request.getServletContext().getRealPath("") + File.separator + folderName;
             File dir = new File(uploadPath);
             if (!dir.exists()) {

@@ -102,7 +102,7 @@ public class ServiceEtudiant {
                     + "FROM creneau\n"
                     + "WHERE CODECRE in"
                     + "(select distinct cre.CODECRE\n"
-                    + "from creneau cre, cours c,etreprersenter pre \n"
+                    + "from creneau cre, cours c, Etrepresent pre \n"
                     + "where cre.CODECRE=pre.CODECRE\n"
                     + "and cre.HEUREDEB>=?\n"
                     + "and cre.HEUREDEB<=?\n"
@@ -117,11 +117,11 @@ public class ServiceEtudiant {
                     + "FROM creneau\n"
                     + "WHERE CODECRE in"
                     + "(select distinct cre.CODECRE\n"
-                    + "from creneau cre, etreprersenter pre \n"
+                    + "from creneau cre, Etrepresent pre \n"
                     + "where cre.CODECRE=pre.CODECRE\n"
                     + "and cre.HEUREDEB>=?\n"
                     + "and cre.HEUREDEB<=?\n"
-                    + "and cre.typeactivitecre in (\"cours\",\"seance\")" + "\n"
+                    + "and cre.typeactivitecre in (\"enseignement\",\"seance\")" + "\n"
                     + "and pre.NUMETUDIANT=" + etu.getNumetudiant() + "\n "
                     + "and month(cre.datecre)=" + mois + "\n"
                     + "and year(cre.datecre)=" + annee + "\n"
@@ -151,12 +151,12 @@ public class ServiceEtudiant {
 //        Groupe g = (Groupe) sessH.load(Groupe.class, 3);
 //        System.out.println(estDansGroupe(sessH, 1, g));
 //        System.out.println(getMinTotalPre(sessH, e, new Time(14, 0, 0), new Time(17, 0, 0), new Date(2020, 3, 28), "ABS", "cours"));
-        //Set<Etreprersenter> lstP = es.get(0).getEtreprersenters();
+        //Set<Etrepresent> lstP = es.get(0).getEtrepresents();
         t.commit();
-//       Iterator<Etreprersenter> iterator = lstP.iterator();
+//       Iterator<Etrepresent> iterator = lstP.iterator();
 //        
 //        for (iterator; iterator.hasNext()) {
-//            Etreprersenter next = iterator.next();
+//            Etrepresent next = iterator.next();
 //            
 //        }
 //               gs.add( serviceGroupe.getGroupe(sessH, 2));

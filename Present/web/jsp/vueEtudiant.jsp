@@ -44,7 +44,11 @@
                             <a style="color:white;" class="nav-link" href="#">Déclarer ma présence</a>
                         </li>
                         <li class="nav-item active ">
-                            <a  style="color:#d9d9d9;" class="nav-link " href="feuilleetu.jsp" >Mes feuilles d'émargement</a>
+                            <a  style="color:#d9d9d9;" class="nav-link " href="feuilleetu" >Mes feuilles d'émargement</a>
+
+                        </li>
+                        <li class="nav-item active ">
+                            <a  style="color:#d9d9d9;" class="nav-link " href="dowloadEtudiant" >Télécharger</a>
 
                         </li>
                         <li class="nav-item">

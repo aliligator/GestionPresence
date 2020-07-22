@@ -3,53 +3,56 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package servlets.responsableForm;
 
+/**
+ * Inutile  没用了
+ */
+package servlets.etudiant;
+
+import bd.HibernateUtil;
 import java.io.IOException;
-import java.sql.SQLException;
+import java.text.ParseException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import services.Bdforcours;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 /**
  *
- * @author Bonso
+ * @author yuxuan
  */
-public class ServletAffecter extends HttpServlet {
+public class ServeletSaisirPres extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException, ClassNotFoundException, SQLException {
-        response.setContentType("application/xml;charset=UTF-8");
-        response.setCharacterEncoding("UTF-8");
-        String[] numetu = request.getParameterValues("oui");
-        int idGroupe = Integer.parseInt(request.getParameter("saisirgroupe"));
-        Bdforcours.supprimer(idGroupe);
-        try {
-            for (int i = 0; i < numetu.length; i++) {
-                Bdforcours.affecterEtudianrGroupe(Integer.parseInt(numetu[i]), idGroupe);
-            }
-//          request.getRequestDispatcher("AffecterEtudiant").forward(request, response);
-            response.sendRedirect("affectergroupe");
-
-        } catch (Exception ex) {
-            request.setAttribute("msg_error", ex.getMessage());
-        }
-//      catch(IOException | ServletException ex){
-//          request.setAttribute("msg_error", ex.getMessage());
-//      }
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException, ParseException 
+    {
+      
+      Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+      Transaction t = session.beginTransaction();
+      
+      //récupere les valeurs saisis (typeActivite+Date+Heure)
+      String actPres = request.getParameter("typeAct");
+      String dateStr = request.getParameter("datePres");
+      Long heurePres = Long.parseLong(request.getParameter("heure"));
+      Long minutePres =Long.parseLong(request.getParameter("minute"));
+      int idEtudiant = (int)request.getSession().getAttribute("idetu");
+      
+      //Saisir dans base de données
+      //String typeActivite, String dateSaisir, Long heure, Long minute,int idEtudiant
+      String message = "";
+      try{
+          //SaisirPres.saisirPres(session,actPres, dateStr,heurePres,minutePres, idEtudiant);
+          message = "Votre informations sont bien saisies";
+          request.setAttribute("msg_info", message);
+          request.getRequestDispatcher("vueetu").forward(request, response);
+          
+      }catch(Exception ex){
+          request.setAttribute("msg_error", ex.getMessage());
+      }
+      t.commit();
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -66,8 +69,8 @@ public class ServletAffecter extends HttpServlet {
             throws ServletException, IOException {
         try {
             processRequest(request, response);
-        } catch (ClassNotFoundException | SQLException ex) {
-            Logger.getLogger(ServletAffecter.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ParseException ex) {
+            Logger.getLogger(ServeletSaisirPres.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -84,8 +87,8 @@ public class ServletAffecter extends HttpServlet {
             throws ServletException, IOException {
         try {
             processRequest(request, response);
-        } catch (ClassNotFoundException | SQLException ex) {
-            Logger.getLogger(ServletAffecter.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ParseException ex) {
+            Logger.getLogger(ServeletSaisirPres.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

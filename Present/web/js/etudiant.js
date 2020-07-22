@@ -10,8 +10,7 @@ function l_creneauEtu()
         var xhr = new XMLHttpRequest();
 
         var date = document.getElementById("datechoisi").value;
-        //alert(date);
-
+        //alert(date)
         // Requête au serveur avec les paramètres éventuels.
         xhr.open("GET", "servletCrenPres" + "?datechoisi=" + date, true);
 

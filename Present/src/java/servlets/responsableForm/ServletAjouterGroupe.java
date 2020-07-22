@@ -5,6 +5,7 @@
  */
 package servlets.responsableForm;
 
+import bd.Formation;
 import bd.HibernateUtil;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -40,8 +41,15 @@ public class ServletAjouterGroupe extends HttpServlet {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction t = session.beginTransaction();
         String nomg = request.getParameter("ajoutergroupe");
+        
+        String codefor = request.getParameter("saisircours");
+        int codef = Integer.parseInt(codefor);
+        
+        
         int codec = Integer.parseInt(request.getParameter("saisircours"));
-        int codeg = Bdforcours.AjouterGroupe(nomg);
+        //int codeg = Bdforcours.AjouterGroupe(nomg,codef);
+        
+
 //        String nomg = request.getParameter("ajoutergroupe");
 //        int codec = Integer.parseInt(request.getParameter("saisircours"));
 //        Cours c = (Cours) session.load(Cours.class, codec);
@@ -52,8 +60,9 @@ public class ServletAjouterGroupe extends HttpServlet {
 //        g = services.serviceGroupe.getLastGroupe(session);
 //        int codeg = Bdforcours.AjouterGroupe(nomg);
         try {
-            Bdforcours.AjouterAssociation(codec, codeg);
-            request.getRequestDispatcher("AffecterEtudiant").forward(request, response);
+            Bdforcours.AjouterGroupe(nomg, codef);
+            //Bdforcours.AjouterAssociation(codec, codeg);
+            request.getRequestDispatcher("affectergroupe").forward(request, response);
         } catch (IOException | ServletException ex) {
             request.setAttribute("msg_error", ex.getMessage());
         }
